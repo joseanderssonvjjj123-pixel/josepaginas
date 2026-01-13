@@ -5,7 +5,7 @@ body {
     justify-content: center;
     text-align: center;
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      animation: entrada 1s ease forwards;
+animation: entrada 1s ease forwards;  
 }   
 
     h1{text-align: center;
@@ -15,7 +15,7 @@ body {
 
 .titulo {
   font-size: 32px;      /* el tamaño que quieras */
-  color: white;
+  color: rgb(255, 255, 255);
   text-align: center;
   white-space: nowrap; /* 👈 evita que se parta */
 }
