@@ -130,3 +130,112 @@ input, .password, .myButton {
     from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+ 
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        /* 2. Checkbox oculto */
+        #menu-toggle {
+            display: none !important;
+        }
+
+        /* 3. El cuadrado blanco (Botón Hamburguesa) */
+        .menu-icon {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 50px; /* Tamaño grande pedido */
+            height: 45px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 9999; /* El número más alto para que nada lo tape */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px; /* Separación de las 3 rayitas */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background-color: #333333;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* 4. El panel negro lateral */
+        .menu-panel {
+            position: fixed;
+            top: 0;
+            left: -100%; /* Escondido */
+            width: 250px;
+            height: 100vh;
+            background-color: #0d0d0d;
+            z-index: 9000;
+            transition: left 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            padding-top: 100px;
+            align-items: center;
+        }
+
+        /* 5. Lógica de apertura */
+        #menu-toggle:checked ~ .menu-panel {
+            left: 0;
+        }
+
+        /* 6. La X Roja (Cuando está abierto) */
+        #menu-toggle:checked ~ .menu-icon {
+            background-color: transparent;
+            box-shadow: none;
+        }
+
+        #menu-toggle:checked ~ .menu-icon span {
+            background-color: #ff0000; /* Rojo vibrante */
+            width: 35px;
+        }
+
+        #menu-toggle:checked ~ .menu-icon span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        #menu-toggle:checked ~ .menu-icon span:nth-child(2) {
+            opacity: 0;
+        }
+
+        #menu-toggle:checked ~ .menu-icon span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* 7. Estilo de los links (Para que no salgan morados) */
+        .menu-panel ul {
+            list-style: none;
+            width: 100%;
+            text-align: center;
+        }
+
+        .menu-panel li {
+            margin: 20px 0;
+        }
+
+        .menu-panel a {
+            color: #ffffff !important; /* Fuerza el blanco */
+            text-decoration: none;
+            font-size: 1.6rem;
+            font-weight: 300;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .menu-panel a:hover {
+            color: #ff0000 !important;
+        }
