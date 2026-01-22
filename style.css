@@ -158,7 +158,7 @@ input, .password, .myButton {
         left: 0;
         width: 100%; 
         height: auto;
-        flex-direction: row; /* Horizontal en Celular */
+        flex-direction: column; /* Horizontal en Celular */
         padding: 80px 0 20px 0;
         transition: top 0.4s ease;
     }
@@ -167,7 +167,7 @@ input, .password, .myButton {
         flex-direction: column; /* Horizontal en Celular */
         justify-content: center;
         width: 100%;
-        gap: 15px;
+        gap: 25px;
     }
 
     #menu-toggle:checked ~ .menu-panel {
