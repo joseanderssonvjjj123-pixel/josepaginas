@@ -24,7 +24,7 @@ body {
     text-align: center;
     position: relative;
     z-index: 1;
-    transition: transform 0.4s ease; /* Para que se mueva suave si es necesario */
+    transition: all 0.4s ease;
 }
 
 /* 3. Botón de las 3 rayitas (Cuadrado Blanco) */
@@ -53,33 +53,64 @@ body {
     transition: 0.3s;
 }
 
-/* 4. MENÚ EN CELULAR (HORIZONTAL AL ABRIR) */
+/* 4. COMPORTAMIENTO POR DEFECTO (PC - VERTICAL IZQUIERDA) */
 .menu-panel {
     position: fixed;
-    top: -100%; /* Ahora sale desde arriba, no desde el lado */
-    left: 0;
-    width: 100%; /* Ocupa todo el ancho en horizontal */
-    height: auto;
+    top: 0;
+    left: -100%; 
+    width: 250px;
+    height: 100vh;
     background-color: #0d0d0d;
     z-index: 9000;
-    transition: top 0.4s ease; /* Animación vertical */
-    padding: 80px 0 20px 0;
+    transition: left 0.4s ease;
+    display: flex;
+    flex-direction: column; /* Vertical en PC */
+    padding-top: 100px;
+    align-items: center;
+}
+
+.menu-panel ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column; /* Vertical en PC */
+    gap: 30px;
 }
 
 #menu-toggle:checked ~ .menu-panel {
-    top: 0; /* Se desliza hacia abajo */
+    left: 0;
 }
 
-/* 5. Ajuste del Cuadro Grande en Celular para estar en el Centro */
+/* 5. COMPORTAMIENTO PARA CELULAR (HORIZONTAL SUPERIOR) */
 @media (max-width: 768px) {
+    .menu-panel {
+        top: -100%; 
+        left: 0;
+        width: 100%; 
+        height: auto;
+        flex-direction: row; /* Horizontal en Celular */
+        padding: 80px 0 20px 0;
+        transition: top 0.4s ease;
+    }
+
+    .menu-panel ul {
+        flex-direction: row; /* Horizontal en Celular */
+        justify-content: center;
+        width: 100%;
+        gap: 15px;
+    }
+
+    #menu-toggle:checked ~ .menu-panel {
+        top: 0;
+        left: 0;
+    }
+
+    /* Mover el cuadro a la derecha para que se vea centrado en el móvil */
     #menu-toggle:checked ~ .algo {
-        /* Si el menú fuera lateral, esto lo empujaría a la derecha para centrarlo */
-        /* Como ahora es horizontal arriba, nos aseguramos de que baje un poco para no ser tapado */
-        transform: translateY(50px); 
+        transform: translateY(40px); /* Baja un poco para no chocar con el menú horizontal */
     }
 }
 
-/* 6. Lógica de la X Roja */
+/* Lógica de la X Roja */
 #menu-toggle { display: none !important; }
 #menu-toggle:checked ~ .menu-icon { background: transparent; }
 #menu-toggle:checked ~ .menu-icon span { background: #ff0000; }
@@ -87,29 +118,22 @@ body {
 #menu-toggle:checked ~ .menu-icon span:nth-child(2) { opacity: 0; }
 #menu-toggle:checked ~ .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-/* Estilo de los Links en Horizontal para Celular */
-.menu-panel ul {
-    list-style: none;
-    display: flex; /* Los pone uno al lado del otro */
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
 .menu-panel a {
     color: white !important;
     text-decoration: none;
     font-size: 1.2rem;
     text-transform: uppercase;
+    transition: 0.3s;
 }
 
-/* Estilos de inputs y botón (Tu código original) */
+.menu-panel a:hover { color: #ff0000 !important; }
+
+/* Inputs y Botón */
 input, .myButton {
     width: 100% !important;
     height: 45px;
     margin: 10px 0;
     border-radius: 10px;
-    border: none;
 }
 
 .myButton {
@@ -117,4 +141,5 @@ input, .myButton {
     color: white;
     font-weight: bold;
     cursor: pointer;
+    border: none;
 }
