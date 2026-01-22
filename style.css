@@ -164,7 +164,7 @@ input, .password, .myButton {
     }
 
     .menu-panel ul {
-        flex-direction: row; /* Horizontal en Celular */
+        flex-direction: column; /* Horizontal en Celular */
         justify-content: center;
         width: 100%;
         gap: 15px;
